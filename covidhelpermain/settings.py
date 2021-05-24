@@ -80,13 +80,24 @@ WSGI_APPLICATION = 'covidhelpermain.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'gugaramji',			
+#         'USER': 'ganjuji1',			
+#         'PASSWORD': 'hemantsharma',				
+#         'HOST': 'db4free.net',
+#         'PORT': '3306',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gugaramji',			
-        'USER': 'ganjuji1',			
-        'PASSWORD': 'hemantsharma',				
-        'HOST': 'db4free.net',
+        'NAME': 'MzK9KbXD7r',			
+        'USER': 'MzK9KbXD7r',			
+        'PASSWORD': '71iiG5CoPc',				
+        'HOST': 'remotemysql.com',
         'PORT': '3306',
     }
 }
