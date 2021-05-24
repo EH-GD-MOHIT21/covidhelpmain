@@ -1,0 +1,206 @@
+{% load static %} {% block headlinksnav %}
+
+<head>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="{% static 'imgs/favicon.svg' %}">
+    <link rel="stylesheet" href="{% static 'css/nav_bar.css' %}">
+</head>
+
+
+
+{% endblock %} {% block nav %}
+<div class="navbar">
+    <nav>
+        <div class="logo">
+            <h1>Helpus</h1>
+        </div>
+        <div class="openMenu" id="offwhenreq"><i class="fa fa-bars"></i></div>
+        <ul class="mainMenu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/find">Explore</a></li>
+            <li><a href="/aboutus">About us</a></li>
+            {% if user.is_authenticated %}
+            {% comment %} /logmeout {% endcomment %}
+            <li><a href="#" class="last_ico" id="myBtn">logout</a></li>
+            {% else %}
+            <li><a href="/signup" class="last_ico">Signup</a></li>
+            {% endif %}
+            <div class="closeMenu"><i class="fa fa-times"></i></div>
+            <span class="icons">
+                <a href="https://www.facebook.com/profile.php?id=100004779451804" target="_blank"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/hks74123/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UC41ksagdFtAUKfSsNzGubhA" target="_blank"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://github.com/EH-GD-MOHIT21" target="_blank"><i class="fab fa-github"></i></a>
+            </span>
+        </ul>
+    </nav>
+</div>
+<!-- The Modal -->
+    {% if user.is_authenticated %}
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Hello {{user.username}}</h2>
+            </div>
+            <div class="modal-body">
+                <p>Do You want to signout?</p>
+            </div>
+            <div class="modal-footer">
+                <h3><a href="/logmeout">Yes</a>
+                    <a onclick="closemdd()">No</a>
+                </h3>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        function closemdd(){
+            modal.style.display = "none";
+        }
+    </script>
+    <style>
+        .modal {
+            display: none;
+            position: absolute;
+            z-index: 10;
+            padding-top: 100px;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 50%;
+            height: 24%;
+            max-height: 170px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+        /* Add Animation */
+        
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+        
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+        /* The Close Button */
+        
+        .close {
+            color: white;
+            float: right;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+            /* text-align: center; */
+        }
+        
+        .modal-body {
+            padding: 5px 16px;
+            font-size: 20px;
+            text-align: center;
+            padding-top: 15px;
+        }
+        
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: white;
+            color: white;
+            /* margin-left: 30%; */
+            margin-top: 5px;
+            height: 30%;
+            text-align: center;
+            /* text-align: ; */
+        }
+        .modal-footer a{
+            display: inline-block;
+            background: rgb(236, 230, 230);
+            color: rgb(0,0,0.1);
+            border: 1px solid gray;
+            width: 15%;
+            height: 85%;
+            border-radius: 2px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            padding: 4px;
+            cursor: pointer;
+        }
+        @media(max-width:650px){
+            .modal-content{
+                width: 80%;
+                height: 22%;
+            }
+            .modal-footer a{
+               width: 22%;
+               padding: 0px; 
+            }
+        }
+        
+    </style>
+    {% endif %}
+<script src="{% static 'js/nav_bar.js' %}"></script>
+
+{% comment %} Not {{user.username}}? {% endcomment %}
+
+{% endblock %}   

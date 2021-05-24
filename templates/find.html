@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+    <link rel="stylesheet" href="{% static 'css/find.css' %}"> {% include 'navbar.html' %}
+    <script src="{% static 'js/state.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/message.css' %}"> {% for message in messages%} {% if message.tags == "error" %}
+    <style>
+        .alert-warning {
+            background: #d9534f;
+            color: white;
+        }
+    </style>
+    {% elif message.tags == "success" %}
+    <style>
+        .alert-warning {
+            background: #5cb85c;
+            color: white;
+        }
+    </style>
+    {% endif %} {% endfor %}
+</head>
+
+<body>
+
+    {% block headlinksnav %} {% endblock %} {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible" id="message-box-boot" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" id="hembtn" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i
+            class="fas fa-times" style="font-size:18px;"></i></button>
+    </div>
+    {% endfor %}
+
+    <div class="enablefilters">
+        <button type="button" id="sctnr">Show Filters</button>
+        <button type="button" id="movebtn" style="float: left; padding: 7px;margin-left: 20px;">Clear Filters</button>
+    </div>
+
+    <div class="categoryfield">
+
+        <div class="formcat" id="formcat">
+            <form action="/filters" method="GET">
+
+                <input type="text" name="input" placeholder="Search For Fields" id="inpbox" autocomplete="off">
+                <div class="selectchoice">
+                    <label for="choicecat">Fields: </label>
+                    <select name="choice" id="choicecat">
+                        <option value="custom">Custom</option>
+                        <option value="state">State</option>
+                        <option value="city">City</option>
+                        <option value="Help Type">Help Type</option>
+                        <option value="All Filters">All Filters</option>
+                    </select>
+                    <select onchange="print_city('state', this.selectedIndex);" id="sts" name="state" class="form-control"></select>
+                    <select id="state" class="form-control" name="city"></select>
+                    <script language="javascript">
+                        print_state("sts");
+                    </script>
+                    <label for="choicecat1">Types: </label>
+                    <select name="choice1" id="choicecat1">
+                        <option value="none">none</option>
+                        <option value="vehicle">vehicle</option>
+                        <option value="food">food</option>
+                        <option value="hospital info">hospital info</option>
+                        <option value="medicines">medicines</option>
+                        <option value="vaccination">vaccination</option>
+                        <option value="non covid diseases">non covid diseases</option>
+                    </select>
+                </div>
+                <div class="mainsbnbtn">
+                    <button type="submit" id="mbtnf">Apply</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="tb">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Help-Line Number</th>
+                <th>Location</th>
+                <th>Description</th>
+            </tr>
+            {% for pad in data %}
+            <tr>
+                <td>{{pad.first_name}} {{pad.last_name}}</td>
+                <td>{{pad.first_contact}} {{pad.second_contact}}</td>
+                <td class="locate">{{pad.city}} ({{pad.state}})</td>
+                <td class="desc1">Help-Type--> {{pad.facilities}}<br>{{pad.desc}}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+<script src="{% static 'js/find.js' %}"></script>
+
+{% if messages %}
+<script>
+    document.getElementById('hembtn').addEventListener('click', function() {
+        document.getElementById('message-box-boot').className = "alert alert-warning alert-dismissible" + ' fade';
+        id_rm = setInterval(rmmydiv, 750)
+    });
+
+    function rmmydiv() {
+        document.getElementById('message-box-boot').style.display = 'none';
+        clearInterval(id_rm);
+    };
+</script>
+{% endif %}
+
+</html>

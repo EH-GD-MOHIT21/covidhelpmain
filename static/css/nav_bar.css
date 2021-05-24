@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar .logo {
+    color: white;
+}
+
+nav {
+    /* background: rgba(0, 0, 0, 0.7);
+     */
+    background: rgba(66, 133, 244, 0.8);
+    display: flex;
+    justify-content: space-between;
+}
+
+nav .mainMenu {
+    display: flex;
+    list-style: none;
+}
+
+nav .mainMenu li a {
+    display: inline-block;
+    padding: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 1.5rem;
+    margin-top: 13px;
+}
+
+nav .mainMenu li a:hover {
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px white, 0 0 10px white;
+}
+
+nav .mainMenu .mainMenu li a:hover {
+    box-shadow: none;
+}
+
+nav .openMenu {
+    font-size: 2rem;
+    margin: 40px;
+    display: none;
+    cursor: pointer;
+}
+
+nav .mainMenu .closeMenu,
+.icons i {
+    font-size: 2rem;
+    display: none;
+    cursor: pointer;
+}
+
+.fa-facebook,
+.fa-youtube,
+.fa-instagram,
+.fa-github {
+    color: purple;
+}
+
+.fa-facebook:hover {
+    color: rgb(0, 110, 255);
+}
+
+.fa-youtube:hover {
+    color: rgb(196, 48, 43);
+}
+
+.fa-instagram:hover {
+    color: rgb(255, 0, 191);
+}
+
+.fa-github:hover {
+    color: rgb(255, 123, 0);
+}
+
+nav .logo {
+    margin: 20px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.last_ico {
+    margin-right: 20px;
+}
+
+
+/*----------------------------------Media query starts here.----------------------------------------*/
+
+@media(max-width: 800px) {
+    nav .mainMenu {
+        height: 100vh;
+        position: fixed;
+        z-index: 5;
+        top: 0;
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: rgba(66, 133, 244, 0.8);
+        transition: top 1s ease;
+        display: none;
+    }
+    nav .mainMenu .closeMenu {
+        display: block;
+        position: absolute;
+        z-index: 5;
+        top: 20px;
+        right: 20px;
+    }
+    nav .openMenu {
+        display: block;
+    }
+    nav .mainMenu li a:hover {
+        background: none;
+        color: cyan;
+        font-size: 1.6rem;
+    }
+    .icons i {
+        display: inline-block;
+        padding: 12px;
+    }
+    nav .logo {
+        margin-top: 32px;
+    }
+    .last_ico {
+        margin-right: 0px;
+    }
+}

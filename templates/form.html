@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill out</title>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/message.css' %}">
+    <script src="{% static 'js/state.js' %}"></script>
+    {% include 'navbar.html' %} {% block headlinksnav %} {% endblock %}
+    {% for message in messages%} {% if message.tags == "error" %}
+    <style>
+        .alert-warning {
+            background: #d9534f;
+            color: white;
+        }
+    </style>
+    {% elif message.tags == "success" %}
+    <style>
+        .alert-warning {
+            background: #5cb85c;
+            color: white;
+        }
+    </style>
+    {% endif %} {% endfor %}
+</head>
+
+<body>
+    {% block nav %}
+    {% endblock %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible" id="message-box-boot" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" id="hembtn" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i
+            class="fas fa-times" style="font-size:18px;"></i></button>
+    </div>
+    {% endfor %}
+    <form action="/saveresponse/userinfo/covidhelper" method='POST'>
+    <div class="frm">
+        <div class="header">
+        <h2>Register for Helping</h2>
+        <h4>Create Your Free account</h4>
+        </div>
+        <div class="sinn">
+            <input type="text" class="name1" required name="fst_name" placeholder="First Name(Required)">
+            <input type="text" class="name" name="lst_name" placeholder="Last Name">
+            <input type="text" required class="hlpnu" name="1sthelp" placeholder="First Helpline(Required)">
+            <input type="text" class="hlp2nu" name="2ndhelp" placeholder="Second Helpline or mail id">
+            <select onchange="print_city('state', this.selectedIndex);" id="sts" name="state" class="form-control" required></select>
+            <select id="state" class="form-control" name="city" required></select>
+            <script language="javascript">
+                print_state("sts");
+            </script>
+        </div>
+        <div class="restbody">
+        <div class="helptypelable">
+            <label for="field">Help type(Can be multiple):</label>
+        </div>
+        <div class="fitem">
+            <div id="field">
+                <div class="checkcontainer">
+                    <input type="checkbox" name="field1" id="field1" value="vehicle">
+                    <label for="field1">vehicle</label><br>
+                </div>
+                <div class="checkcontainer">
+                    <input type="checkbox" name="field2" id="field2" value="food">
+                    <label for="field2">food</label><br>
+                </div>
+                <div class="checkcontainer">
+                    <input type="checkbox" name="field3" id="field3" value="hospital info" checked>
+                    <label for="field3">hospital info</label><br>
+                </div>
+                <div class="checkcontainer">
+                    <input type="checkbox" name="field4" id="field4" value="medicines">
+                    <label for="field4">medicines</label><br>
+                </div>
+                <div class="checkcontainer">
+                    <input type="checkbox" name="field5" id="field5" value="vaccination">
+                    <label for="field5">vaccination</label><br>
+                </div>
+                <div class="checkcontainer">
+                    <input type="checkbox" name="field6" id="field6" value="non covid diseases" checked>
+                    <label for="field6">non covid diseases</label><br>
+                </div>
+            </div>
+        </div>
+        <div class="describe">
+            <input type="text" name="moreinfo" placeholder="Please describe your help">
+        </div>
+        
+        <div id="btnholder">
+            <button id="regg">Register</button>
+        </div>
+        </div>
+    </div>
+    </form>
+</body>
+{% if messages %}
+<script>
+    document.getElementById('hembtn').addEventListener('click', function() {
+        document.getElementById('message-box-boot').className = "alert alert-warning alert-dismissible" + ' fade';
+        id_rm = setInterval(rmmydiv, 750)
+    });
+
+    function rmmydiv() {
+        document.getElementById('message-box-boot').style.display = 'none';
+        clearInterval(id_rm);
+    };
+</script>
+{% endif %}
+</html>

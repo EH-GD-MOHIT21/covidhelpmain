@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    {% include 'navbar.html' %} {% block headlinksnav %} {% endblock %}
+    <!-- <link rel="stylesheet" href="{% static 'css/nav_bar.css' %}"> -->
+</head>
+
+<body>
+    <div class="bdyy">
+    <section>
+        <div class="container">
+            <div class="card">
+                <div class="content">
+                    <div class="imgBX"><img src="{% static 'imgs/team/team2.png' %}"></div>
+                    <div class="contentBx">
+                        <h3>Mohit Satija<br><span>Full Stack Developer</span></h3>
+                    </div>
+                </div>
+                <ul class="sci">
+                    <li style="--i:1">
+                        <a href="https://www.instagram.com/i_m_mohit021/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li style="--i:2">
+                        <a href="https://www.youtube.com/channel/UC41ksagdFtAUKfSsNzGubhA" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </li>
+                    <li style="--i:3">
+                        <a href="https://github.com/EH-GD-MOHIT21" target="_blank"><i class="fab fa-github"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="content">
+                    <div class="imgBX"><img src="{% static 'imgs/team/team1.png' %}"></div>
+                    <div class="contentBx">
+                        <h3>Hemant Sharma<br><span>Full Stack Developer</span></h3>
+                    </div>
+                </div>
+                <ul class="sci">
+                    <li style="--i:1">
+                        <a href="https://www.facebook.com/profile.php?id=100004779451804" target="_blank"><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li style="--i:2">
+                        <a href="https://github.com/hks74123" target="_blank"><i class="fab fa-github"></i></a>
+                    </li>
+                    <li style="--i:3">
+                        <a href="https://www.instagram.com/hks74123/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="content">
+                    <div class="imgBX"><img src="{% static 'imgs/team/team3.png' %}"></div>
+                    <div class="contentBx">
+                        <h3>Neeraj Sharma<br><span>Full Stack Developer</span></h3>
+                    </div>
+                </div>
+                <ul class="sci">
+                    <li style="--i:1">
+                        <a href="https://github.com/neerajenigma" target="_blank"><i class="fab fa-github"></i></a>
+                    </li>
+                    <li style="--i:2">
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </li>
+                    <li style="--i:3">
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-dismissible {
+    padding-right: 3rem;
+}
+
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    padding-right: 2.6rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.fade {
+    animation: mohit 1s linear;
+}
+
+.dspnone {
+    display: none;
+}
+
+@keyframes mohit {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.25;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.alert-dismissible .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    cursor: pointer;
+}

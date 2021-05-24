@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #bfeef4;
+}
+
+.header {
+    background: white;
+    padding-top: 2px;
+    padding-bottom: 7px;
+    border-radius: 7px;
+}
+
+.frm {
+    display: block;
+    width: 700px;
+    margin: 20px auto;
+    text-align: center;
+    /* background: pink; */
+    border-radius: 10px;
+    border-top: 10px solid #00bcd4;
+}
+
+.sinn {
+    border-left: 6px solid #4285f4;
+    background: white;
+    margin: 15px auto;
+    border-radius: 6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.restbody {
+    border-left: 6px solid #4285f4;
+    background: white;
+    margin: 15px auto;
+    border-radius: 6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.frm h2 {
+    padding-top: 5px;
+}
+
+.frm h4 {
+    padding-top: 5px;
+}
+
+input[type="text"] {
+    display: block;
+    width: 460px;
+    height: 40px;
+    margin: 20px auto;
+    outline: none;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 7px;
+}
+
+#regg {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+select {
+    margin-bottom: 10px;
+}
+
+#btnholder {
+    padding: 10px;
+}
+
+.checkcontainer {
+    text-align: justify;
+    margin-top: 6px;
+}
+
+#field {
+    display: block;
+    width: 160px;
+    margin: auto;
+}
+
+.helptypelable {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media(max-width:700px) {
+    .frm {
+        width: 95%;
+    }
+    input[type="text"] {
+        width: 87%;
+    }
+    #field {
+        width: 200px;
+    }
+}

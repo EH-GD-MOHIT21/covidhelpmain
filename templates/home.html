@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    {% include 'navbar.html' %} {% block headlinksnav %} {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/message.css' %}">
+    {% for message in messages%} {% if message.tags == "error" %}
+    <style>
+        .alert-warning {
+            background: #d9534f;
+            color: white;
+        }
+    </style>
+    {% elif message.tags == "success" %}
+    <style>
+        .alert-warning {
+            background: #5cb85c;
+            color: white;
+        }
+    </style>
+    {% endif %} {% endfor %}
+</head>
+
+<body>
+    {% block nav %} {% endblock %}
+
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible" id="message-box-boot" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" id="hembtn" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i
+                class="fas fa-times" style="font-size:18px;"></i></button>
+    </div>
+    {% endfor %}
+
+    <div class="parent">
+        <div class="mohini" style="background-image: url({% static 'imgs/img--1q.jpg' %})" ;>
+            <div class="dropup">
+                <button class="dropbtn" onclick="showoption()">
+                    Explore Now</button>
+                <div class="dropup-content" id="dropc">
+                    <a href="/helpform">Provide Help</a>
+                    <a href="/find">Need Help</a>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="mainbody">
+            <h1>Welcome to <span id="typing1"></span></h1>
+            <h4>A Form Designed <span id="typing2"></span></h4>
+        </div> -->
+
+    </div>
+
+
+</body>
+
+<script>
+    flag=0
+    jj = 0;
+    
+    function showoption() {
+        flag=1
+        jj = jj + 1;
+        if (jj % 2 != 0) {
+            document.getElementById("dropc").style.display = "block";
+        }
+        else {
+            document.getElementById("dropc").style.display = "none";
+        }
+    }
+</script>
+
+{% if messages %}
+<script>
+    document.getElementById('hembtn').addEventListener('click', function () {
+        document.getElementById('message-box-boot').className = "alert alert-warning alert-dismissible" + ' fade';
+        id_rm = setInterval(rmmydiv, 750)
+    });
+
+    function rmmydiv() {
+        document.getElementById('message-box-boot').style.display = 'none';
+        clearInterval(id_rm);
+    };
+</script>
+{% endif %}
+
+</html>
+</body>
+
+</html>
