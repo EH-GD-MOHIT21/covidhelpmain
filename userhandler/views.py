@@ -183,13 +183,12 @@ def login(request):
         else:
             datas = userpersonal.objects.filter(user=user)
             for data in datas:
-                if data.verified:
-                    Login(request, user=user)
-                    messages.success(request,'Successfully logged in.')
-                    return render(request, 'form.html')
-                else:
+                if not data.verified:
                     messages.error(request,'User Not Verified Yet...')
                     return render(request, 'login.html')
+            Login(request, user=user)
+            messages.success(request,'Successfully logged in.')
+            return render(request, 'form.html')
     elif request.user.is_authenticated:
         return redirect('/')
     else:
