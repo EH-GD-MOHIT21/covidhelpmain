@@ -166,6 +166,7 @@ def register(request):
         upes = userpersonal(user=user, phoneno=mobile, email=email,
                             unicode=personalcode, timestamp=datetime.now(timezone.utc))
         upes.save()
+        messages.info(request,f'Confirmation Link sent on mail {email}')
         return render(request, 'login.html')
     else:
         return redirect('/signup')
