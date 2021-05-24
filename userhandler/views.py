@@ -181,10 +181,15 @@ def login(request):
             messages.error(request,'Invalid Credentials...')
             return render(request, 'login.html')
         else:
-            print('success')
-            Login(request, user=user)
-            messages.success(request,'Successfully logged in.')
-            return render(request, 'form.html')
+            datas = userpersonal.objects.filter(user=user)
+            for data in datas:
+                if data.verified:
+                    Login(request, user=user)
+                    messages.success(request,'Successfully logged in.')
+                    return render(request, 'form.html')
+                else:
+                    messages.error(request,'User Not Verified Yet...')
+                    return render(request, 'login.html')
     elif request.user.is_authenticated:
         return redirect('/')
     else:
